@@ -14,7 +14,6 @@ def persons_list(request):
 @login_required
 def persons_new(request):
     form = PersonForm(request.POST or None, request.FILES or None)
-
     if form.is_valid():
         form.save()
         return redirect('person_list')

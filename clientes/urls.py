@@ -5,7 +5,7 @@ from .views import persons_update
 from .views import persons_delete
 from .views import PersonList
 
-
+# noinspection PyPackageRequirements
 urlpatterns = [
     path('list/', persons_list, name="person_list"),
     path('new/', persons_new, name="person_new"),
