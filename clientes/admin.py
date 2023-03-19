@@ -2,7 +2,18 @@ from django.contrib import admin
 from .models import Person, Documento, Venda, Produto
 
 
-admin.site.register(Person)
+class PersonAdmin(admin.ModelAdmin):
+    fields = [
+        'first_name',
+        'last_name',
+        'age',
+        'salary',
+        'bio',
+        'photo',
+        'doc',
+    ]
+
+admin.site.register(Person, PersonAdmin)
 admin.site.register(Documento)
 admin.site.register(Venda)
 admin.site.register(Produto)
