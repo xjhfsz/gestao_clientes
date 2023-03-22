@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 
-
 {% block title %} Administracao {% endblock %}
 
 {% block main %}
@@ -15,13 +14,14 @@
             <ul class="list-group">
                 {% for person in persons %}
                     <li class="list-group-item">
-                        <a href="{% url 'persons_update' person.id %}">{{ person.first_name }}</a>
+                        <a href="{% url 'persons_update' person.id %}">{{ person.nome_completo|title }}</a>
                         <a href="{% url 'persons_delete' person.id %}" class="trash-item">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                     </li>
+
                 {% empty %}
-                    <li>Não há clientes cadastrados.</li>
+                    <li>Desculpe, nao existem clientes cadastrados</li>
                 {% endfor %}
             </ul>
 
@@ -33,16 +33,18 @@
 
         <div class="col">
             {% if user.is_authenticated %}
-                <p>Ola {{user.username }}
+                <p>{{ request.session.app_message }}
                     <a href="{% url 'logout' %}">
                         <span class="badge badge-dark">Sair</span>
                     </a>
                 </p>
-
             {% endif %}
         </div>
     </div>
 
+{% if persons|length >= 20 %}
+   Voce ja tem mais que 20 clientes
+{% endif %}
 
 {% endblock %}
 

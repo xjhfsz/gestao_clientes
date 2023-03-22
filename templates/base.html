@@ -16,11 +16,18 @@
 
     <div class="container">
         <div class="jumbotron">
-            {% block main %}{% endblock %}
+            {% block main %}
+            {% endblock %}
+        </div>
+
+        <div class="row">
+            {% block extra %}
+            {% endblock %}
         </div>
     </div>
 
-    {% block footer %}{% endblock %}
+    {% block footer %}
+    {% endblock %}
 
 </body>
 </html>
